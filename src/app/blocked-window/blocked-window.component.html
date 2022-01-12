@@ -1,0 +1,22 @@
+<section class="label">
+  <div>
+    <p>Програму заблоковано. Введіть пароль</p>
+    <form action="#" #form="ngForm">
+      <input
+        class="password"
+        type="password"
+        name="password"
+        (input)="check = false"
+        placeholder="only numbers!"
+        required
+        pattern="^\d+$"
+        [(ngModel)]="passwordValue"
+        #password="ngModel"
+        [class.green]="password.valid"
+        [class.red]="password.dirty && password.invalid"
+      ><br>
+      <span *ngIf="check">Пароль не вірний</span><br>
+      <input class="button" type="button" value="Розблокувати" (click)="unBlock()">
+    </form>
+  </div>
+</section>

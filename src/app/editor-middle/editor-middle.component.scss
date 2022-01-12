@@ -1,0 +1,26 @@
+.middleArea {
+  max-width: 100%;
+  height: 45px;
+  background: #2c3138;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 3px black;
+}
+input{
+  width: 90px;
+  height: 30px;
+  margin: 0 1px;
+  background: #5f463b;
+  font-size: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 3px black;
+  &:hover{
+    background: #685d58;
+  }
+}

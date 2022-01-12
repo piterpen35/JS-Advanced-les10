@@ -1,0 +1,164 @@
+* {
+  color: white;
+}
+.title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+.bigLabel {
+  position: relative;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #64676e;
+  border-radius: 5px;
+}
+#table,
+#list {
+  display: none;
+}
+.l1,
+.l2{
+  border-top: 2px solid #64676e;
+  border-right: 2px solid #64676e;
+  border-left: 2px solid #64676e;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  height: 25px;
+  padding: 0 10px;
+  font-style: italic;
+  background: #2c3138;
+  transform: skew(-15deg);
+  cursor: pointer;
+  z-index: 1;
+}
+.l2 {
+  left: 83px;
+}
+.checked {
+  height: 28px;
+  top: -28px;
+  z-index: 2;
+}
+.decorBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 2px dotted #64676e;
+  border-radius: 5px;
+  padding: 18px 0;
+  font-size: 14px;
+  font-family: Cambria;
+  margin: 15px 0;
+  & p {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    height: 20px;
+    background-color: #2c3138;
+    color: white;
+    padding: 0 5px;
+    letter-spacing: 1px;
+  }
+}
+.colorSet {
+  width: 50px;
+  height: 25px;
+  border: 1px solid #64676e;
+  margin: 0 5px;
+  background: #2c3138;
+  &:hover {
+    border: 1px solid #2d5395;
+    box-shadow: 0 0 6px #2d5395;
+  }
+}
+input {
+  color: black;
+}
+label{
+  margin: 0 15px 15px 5px;
+}
+.inputValue {
+  max-width: 120px;
+  outline: none;
+  text-align: center;
+  appearance: none;
+  margin: 0 20px 0 5px;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+  }
+}
+select {
+  width: 130px;
+  height: 17px;
+  padding: 0 3px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 0 20px 0 5px;
+  color: black;
+  & option {
+    color: black;
+  }
+}
+.button {
+  display: block;
+  width: 90px;
+  height: 30px;
+  margin: 0 auto;
+  background: #5f463b;
+  font-size: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 3px black;
+  &:hover{
+    background: #685d58;
+  }
+}
+.look {
+  display: inline;
+  width: 122px;
+  margin: 25px 0 0 0;
+}
+.exBlock{
+  width: 300px;
+  min-height: 250px;
+  margin: 0 auto;
+  background: #585959;
+  border-radius: 15px;
+  overflow: auto;
+  padding-bottom: 10px;
+  & div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 20px;
+    background: #5f4336;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    & div {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #fb7d47;
+      margin-right: 6px;
+      cursor: pointer;
+      &:hover {
+        background: red;
+      }
+    }
+  }
+}
+.green {
+  border: 2px solid green;
+}
+.red {
+  border: 2px solid red;
+}
+

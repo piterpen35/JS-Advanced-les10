@@ -1,0 +1,65 @@
+<section class="bottomArea">
+  <form action="#" *ngIf="editBoolean">
+    <textarea name="textArea" [(ngModel)]="finalEditValue" (change)="testFunction()"></textarea>
+    <div class="smallButtonsContainer">
+      <div class="smallButtons" *ngFor="let button of smallButtons"
+           (click)="addButtonValue(button.value)">{{button.title}}</div>
+    </div>
+    <input class="button" type="button" value="Зберегти" (click)="saveChanges()">
+    <input class="button" type="button" value="Добавити" (click)="addBooleanSet()">
+  </form>
+  <div class="smallContainer" *ngIf="styleBoolean">
+    <form action="#">
+      <div class="decorBox">
+        <p>Розмір шрифту</p>
+        <input class="radio" type="radio" name="fontSiZe" id="12px" value="12px" checked (click)="setFontSize($event)">
+        <label for="12px">12 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="14px" value="14px" (click)="setFontSize($event)">
+        <label for="14px">14 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="16px" value="16px" (click)="setFontSize($event)">
+        <label for="16px">16 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="18px" value="18px" (click)="setFontSize($event)">
+        <label for="18px">18 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="20px" value="20px" (click)="setFontSize($event)">
+        <label for="20px">20 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="22px" value="22px" (click)="setFontSize($event)">
+        <label for="22px">22 px</label>
+        <input class="radio" type="radio" name="fontSiZe" id="24px" value="24px" (click)="setFontSize($event)">
+        <label for="24px">24 px</label>
+      </div>
+      <div class="decorBox">
+        <p>Шрифт</p>
+        <select class="FontFamily" name="FontFamily" (change)="setFontFamily($event)">
+          <option value="Arial">Arial</option>
+          <option value="Corbel">Corbel</option>
+          <option value="Century">Century</option>
+        </select><br>
+      </div>
+      <div class="decorBox">
+        <p>Колір</p>
+        <span class="colorSpan">Background:</span>
+        <input class="colorSet" type="color" name="bgColor" [(ngModel)]="newBgColor" (ngModelChange)="setBackgroundColor()">
+        <span class="colorSpan">Text:</span>
+        <input class="colorSet" type="color" name="color" [(ngModel)]="newColor" (ngModelChange)="setColor()">
+      </div>
+      <div class="decorBox">
+        <p>Стиль тексту</p>
+        <input type="checkbox" id="boldText" [value]="boldTextBoolean ? 'normal' : 'bold'"
+               (change)="boldTextBoolean = !boldTextBoolean;setBoldText($event)">
+        <label for="boldText">Жирний</label>
+        <input type="checkbox" id="italicText" [value]="italicTextBoolean ? 'normal' : 'italic'"
+               (change)="italicTextBoolean = !italicTextBoolean;setItalicText($event)">
+        <label for="italicText">Курсив</label>
+        <input type="checkbox" id="underLineText" [value]="underLineTextBoolean ? 'none' : 'underline'"
+               (change)="underLineTextBoolean = !underLineTextBoolean;setUnderLineText($event)">
+        <label for="underLineText">Підкреслений</label>
+      </div>
+    </form>
+  </div>
+  <app-editor-add
+    *ngIf="addBoolean"
+    [newTable]="newTable"
+    (onTableSetValue)="addTable($event)"
+    (onListSetValue)="addList($event)"
+  ></app-editor-add>
+</section>

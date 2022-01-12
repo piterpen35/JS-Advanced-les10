@@ -1,0 +1,37 @@
+<div class="container">
+  <app-editor-top
+    [textAreaValue]="textAreaValue"
+    [styles]="styles"
+  ></app-editor-top>
+  <app-editor-middle
+    (onEditBoolean)="onEditBoolean()"
+    (onStyleBoolean)="onStyleBoolean()"
+    [editBoolean]="editBoolean"
+    (onBlockedBoolean)="blockedBoolean = true"
+  ></app-editor-middle>
+  <app-editor-bottom
+    [editBoolean]="editBoolean"
+    [finalEditValue]="finalEditValue"
+    (onSaveChanges)="saveChanges()"
+    (onColor)="colorSet($event)"
+    (onBackgroundColor)="backgroundColorSet($event)"
+    (onFontSize)="fontSizeSet($event)"
+    (onFontFamily)="fontFamilySet($event)"
+    (onBoldText)="boldTextSet($event)"
+    (onItalicText)="italicTextSet($event)"
+    (onUnderLineText)="underLineTextSet($event)"
+    (onAddBooleanSet)="addBoolean = true; editBoolean = false; styleBoolean = false"
+    (onAddButtonValue)="addButtonValue($event)"
+    [newTable]="newTable"
+    (onTableSetValue)="addTable($event)"
+    (onListSetValue)="addList($event)"
+    [addBoolean]="addBoolean"
+    [styleBoolean]="styleBoolean"
+    (onTest)="test($event)"
+    ></app-editor-bottom>
+  <app-blocked-window
+    *ngIf="blockedBoolean"
+    (onUnBlock)="blockedBoolean = false"
+    ></app-blocked-window>
+</div>
+

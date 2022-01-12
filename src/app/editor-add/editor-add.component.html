@@ -1,0 +1,74 @@
+<p class="title">Що додамо ?</p>
+<div class="bigLabel">
+  <form action="#">
+    <input type="radio" name="elementAdd" id="table" checked (change)="boolean = true">
+    <label class="l1" for="table" [class.checked]="boolean">Таблиця</label>
+    <input type="radio" name="elementAdd" id="list" (change)="boolean = false">
+    <label class="l2" for="list" [class.checked]="!boolean">Список</label>
+  </form>
+  <form action="#" *ngIf="boolean" #tableSet="ngForm">
+    <div class="decorBox">
+      <p>Ширина і висота комірки таблиці</p>
+      <span>Ширина</span>
+      <input class="inputValue" type="number" name="widthCell" placeholder="...1-99..." pattern="^[1-9][0-9]?$" [(ngModel)]="newTable.widthCell" #widthCell="ngModel" [class.green]="widthCell.valid && widthCell.dirty" [class.red]="widthCell.invalid && widthCell.dirty"><br>
+      <span>Висота</span>
+      <input class="inputValue" type="number" name="heightCell" placeholder="...1-99..." pattern="^[1-9][0-9]?$" #heightCell="ngModel" [class.green]="heightCell.valid && heightCell.dirty" [class.red]="heightCell.invalid && heightCell.dirty" [(ngModel)]="newTable.heightCell">
+    </div>
+    <div class="decorBox">
+      <p>Товщина, колір, тип лінії таблиці</p>
+      <span>Товщина</span>
+      <input class="inputValue" type="number" name="widthBorder" placeholder="...1-99..." pattern="^[1-9][0-9]?$" #widthBorder="ngModel" [class.green]="widthBorder.valid && widthBorder.dirty" [class.red]="widthBorder.invalid && widthBorder.dirty" [(ngModel)]="newTable.widthBorder">
+      <span>Тип лінії</span>
+      <select name="borderType" [(ngModel)]="newTable.typeBorder">
+        <option value="solid">solid</option>
+        <option value="dashed">dashed</option>
+        <option value="double">double</option>
+      </select>
+      <span>Колір</span>
+      <input type="color" class="colorSet" name="borderColor" [(ngModel)]="newTable.colorBorder">
+    </div>
+    <div class="decorBox">
+      <p>Кількість рядків і стовпців</p>
+      <span>Кількіть стовпців</span>
+      <input class="inputValue" type="number" name="countCell" placeholder="...1-50..." pattern="^(?:[1-9]|[1-4][0-9]|50)$" #countCell="ngModel" [class.green]="countCell.valid && countCell.dirty" [class.red]="countCell.invalid && countCell.dirty" [(ngModel)]="newTable.countCell">
+      <span>Кількість рядків</span>
+      <input class="inputValue" type="number" name="countRow" placeholder="...1-50..." pattern="^(?:[1-9]|[1-4][0-9]|50)$" #countRow="ngModel" [class.green]="countRow.valid && countRow.dirty" [class.red]="countRow.invalid && countRow.dirty" [(ngModel)]="newTable.countRow">
+    </div>
+    <input *ngIf="widthCell.valid && widthCell.dirty && heightCell.valid && heightCell.dirty && widthBorder.valid && widthBorder.dirty && countCell.valid && countCell.dirty && countRow.valid && countRow.dirty" class="button" type="button" value="Додати" (click)="createTable()">
+  </form>
+  <form action="#" *ngIf="!boolean" #list="ngForm">
+    <div class="decorBox">
+      <p>Тип списку</p>
+      <input type="radio" name="typeList" id="number" checked (change)="listStyleBoolean = true">
+      <label for="number" style="margin: 0 25px 0 5px">Нумерований</label>
+      <input type="radio" name="typeList" id="mark" (change)="listStyleBoolean = false">
+      <label for="mark" style="margin: 0 25px 0 5px">Маркований</label>
+    </div>
+    <div class="decorBox">
+      <p>Параметри списку</p>
+      <span>Кількість елементів</span>
+      <input class="inputValue" type="number" name="countListItems"
+             [(ngModel)]="itemsOfListCount" #countItemsOfList="ngModel" placeholder="...1-50..." pattern="^(?:[1-9]|[1-4][0-9]|50)$" [class.green]="countItemsOfList.valid && countItemsOfList.dirty" [class.red]="countItemsOfList.invalid && countItemsOfList.dirty">
+      <span>Тип маркування</span>
+      <select *ngIf="!listStyleBoolean" name="markType" [(ngModel)]="typeOfMark">
+        <option value="circle">circle</option>
+        <option value="square">square</option>
+        <option value="disc">disc</option>
+      </select>
+      <select *ngIf="listStyleBoolean" name="markType" [(ngModel)]="typeOfMark2">
+        <option value="upper-roman">Римські Числа</option>
+        <option value="decimal">Арабські числа</option>
+      </select>
+    </div>
+    <input *ngIf="listStyleBoolean && countItemsOfList.dirty && countItemsOfList.valid" class="button" type="button" value="Додати" (click)="createList2()">
+    <input *ngIf="!listStyleBoolean && countItemsOfList.dirty && countItemsOfList.valid" class="button" type="button" value="Додати" (click)="createList()">
+  </form>
+</div>
+<input *ngIf="boolean" class="button look" type="button" value="Подивитись на приклад" (click)="createExTable(); exBoolean = true">
+<div *ngIf="boolean && exBoolean" class="exBlock">
+  <div><div (click)="exBoolean = false"></div></div>
+  <section [innerHTML]="exTable | noSanitize"></section>
+</div>
+
+
+
